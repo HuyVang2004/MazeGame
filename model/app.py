@@ -3,6 +3,7 @@ from model import player, maze, ai
 
 pygame.init()
 class App:
+
     def __init__(self,size):
         cell_size = 15
         self.width = (2 * size + 1) * cell_size
@@ -38,6 +39,8 @@ class App:
         self.draw_button(surface, (255, 172, 108), 60, 170, 80, 40, "PAUSE")
 
         self.draw_button(surface, (255, 172, 108), 60, 240, 80,40, "RESTART")
+
+        self.draw_button(surface, (255, 172, 108), 60, 310, 80,40, "SOLUTION")
         shape_width = self.width
 
         if shape_width + 60 <= pos_x <= shape_width + 140:
@@ -47,6 +50,8 @@ class App:
                 self.draw_button(surface, (224, 224, 224), 60, 170, 80, 40, "PAUSE")
             elif 240 <= pos_y <= 280:
                 self.draw_button(surface, (224, 224, 224), 60, 240, 80, 40, "RESTART")
+            elif 310 < pos_y <= 350:
+                self.draw_button(surface, (224, 224, 224), 60, 310, 80, 40, "SOLUTION")
 
         self.window.blit(surface,(self.width, 0))
 
@@ -208,6 +213,8 @@ class App:
                         elif 240 <= y <= 280:
                             restart = True
                             running = False
+                        elif 310 <= y <= 350:
+                            self.draw_ai()
             pos_x, pos_y = pygame.mouse.get_pos()
             self.render()
             self.draw_toolbar(pos_x, pos_y)

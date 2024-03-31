@@ -1,7 +1,5 @@
-from model.app import App
+from model import maze, player, app
 
 if __name__ == '__main__':
-    app = App(25)
+    app = app.App(25)
     app.draw_play()
-
-
